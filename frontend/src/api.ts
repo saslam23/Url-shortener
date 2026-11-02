@@ -1,14 +1,13 @@
 export type User = {id: string; email?: string};
 
-export type Link ={
-    id: string;
-    code: string;
-    target_url: string;
-    created_at: string;
-    expires_at?: string | null;
-    short_url?: string;
+export type Link = {
+  id: string;
+  code: string;
+  target_url: string;
+  created_at: string;
+  expires_at?: string | null;
+  short_url?: string;
 };
-
 export type Stats = {
     link: Link;
     total: number;

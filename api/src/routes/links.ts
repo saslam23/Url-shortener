@@ -50,8 +50,10 @@ linksRouter.post("/", createLinkRateLimiter, async (req, res) =>{
 
     try{
         const {targetUrl, expiresAt} = parsed.data;
+        const base = process.env.PUBLIC_BASE_URL ?? "http://localhost:3000";
+
         const link = await createLink(targetUrl, req.userId!);
-        return res.status(201).json({message: "Link created successfully", link});
+        return res.status(201).json({ ...link, short_url: `${base}/${link.code}` });
     } catch (error) {
         console.error(error);
         return res.status(500).json({error: "Internal server error"});
